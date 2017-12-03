@@ -1237,7 +1237,7 @@ function endGame(){
 			if (pj.score < pj2.score){
 				$("#contGameOver").append('<div id="JugGanador"><p id="puntuacionJ1">Jugador 2</p>');
 			}else if(pj.score > pj2.score){
-				$("#contGameOver").append('<div id="JugGanador"><p id="puntuacionJ1">Jugador 2</p>');
+				$("#contGameOver").append('<div id="JugGanador"><p id="puntuacionJ1">Jugador 1</p>');
 			}else{
 				$("#contGameOver").append('<div id="JugGanador"><p id="puntuacionJ1">Empate</p>');
 			}
@@ -1249,6 +1249,17 @@ function endGame(){
 	else{
 		$("#interfaz").append('<div id="contGameOver"/>');
 		$("#contGameOver").append('<div id="divTituloGameOver"><img id="imgGover" src="Interfaz/gameover.png"/></div>');
+		$("#contGameOver").append('<div id="divGanador"><img id="imgGanador" src="Interfaz/winner.png"/></div>');
+		
+			if (pj.score < pj2.score){
+				$("#contGameOver").append('<div id="JugGanador"><p id="puntuacionJ1">Player 2</p>');
+			}else if(pj.score > pj2.score){
+				$("#contGameOver").append('<div id="JugGanador"><p id="puntuacionJ1">Player 1</p>');
+			}else{
+				$("#contGameOver").append('<div id="JugGanador"><p id="puntuacionJ1">Draw</p>');
+			}
+
+		
 		$("#contGameOver").append('<div id="botonesGameOver"><div id="divReintentarOver"><img id="breintentarover" src="Interfaz/btryagain.png" style="cursor:url(Interfaz/cursorPointer.png), pointer"/></div><div id="divBtnSalirOver"><img id="bsalirover" src="Interfaz/bexit.png" style="cursor:url(Interfaz/cursorPointer.png), pointer"/></div></div></div>');
 	
 	}
