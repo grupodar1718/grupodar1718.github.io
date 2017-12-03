@@ -1,0 +1,115 @@
+<!--
+* Created by Dario González Fernández, Adrián Soriano Valencia y Raúl Caño Arévalo.
+*/-->
+<!DOCTYPE html>
+
+	<head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Demon's Survivor</title>
+		<link rel="stylesheet" type="text/css" href="estilo.css">
+		<link rel="shortcut icon" type="image/png" href="..\Demon's Survivor\Interfaz\favicon.png"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<audio class="sound" src="Sonido\seleccionJugadores.mp3" autoplay loop></audio>
+		
+	</head>
+
+	<body>
+		<div id="bgSeleccionarJugadores">
+		<div id="divNumJugadores">
+		<img id="numJ" src="..\Demon's Survivor\Interfaz\numJugadores.png">
+		</div>
+		<div id="contBotones">
+			<div id="b1p">
+				<a href="UnJugador.html?ES" style="cursor:url(Interfaz/cursorPointer.png), pointer">
+				<img id="b1jugador" src="..\Demon's Survivor\Interfaz\b1jugador.png">
+				</a>
+			</div>
+			<br>
+			<div id="b2p">
+				<a href="Dos_Jugadores.html?ES" style="cursor:url(Interfaz/cursorPointer.png), pointer">
+				<img id="b2jugadores" src="..\Demon's Survivor\Interfaz\b2jugadores.png">
+				</a>
+			</div>
+			<br>
+			<div id="bvolver">
+				<a href="Main.html?" style="cursor:url(Interfaz/cursorPointer.png), pointer">
+				<img id="bregresar" src="..\Demon's Survivor\Interfaz\batras.png">
+				</a>
+			</div>
+		</div>
+		<div id="footAutores">
+		<footer id="autores">Copyright © Raúl Caño, Darío González y Adrián Soriano.</footer>
+		</div>
+		</div>
+		
+		<script>
+			$(document).ready(function(){
+				
+				obtener_localStorage();
+				
+				function obtener_localStorage(){
+				
+					let scores = localStorage.getItem("highscore");
+					scores = JSON.parse(scores);
+					console.log(scores[5] + "elegirnumJ");
+					console.log(scores[7] + "elegirnumJ");
+					//localStorage.setItem("highscore", scores);
+				}
+				
+				
+				var music = localStorage.getItem('music');
+				var parameters = location.search.substring(1).split("&").toString();
+				console.log(parameters);
+				if(parameters ==="EN"){
+					english();
+				}
+				
+				else{
+					spanish();
+				}
+
+				function english(){
+					$('#numJ').attr('src',"Interfaz/numberPlayers.png");
+					$('#b1jugador').attr('src',"Interfaz/b1player.png");
+					$('#b2jugadores').attr('src',"Interfaz/b2players.png");
+					$('#bregresar').attr('src',"Interfaz/bback.png");
+					$("a[href='UnJugador.html?ES']").attr('href', 'UnJugador.html?EN');
+					$("a[href='Dos_Jugadores.html?ES']").attr('href', 'Dos_Jugadores.html?EN');
+					if (music!=="false"){
+					$("a[href='Main.html?']").attr('href', 'Main.html?EN');
+					}
+					else{
+					$("a[href='Main.html?']").attr('href', 'Main.html?ENOFF');
+					}
+				}
+				
+				function spanish(){
+					$('#numJ').attr('src',"Interfaz/numJugadores.png");
+					$('#b1jugador').attr('src',"Interfaz/b1jugador.png");
+					$('#b2jugadores').attr('src',"Interfaz/b2jugadores.png");
+					$('#bregresar').attr('src',"Interfaz/batras.png");
+					$("a[href='UnJugador.html?ES']").attr('href', 'UnJugador.html?ES');
+					$("a[href='Dos_Jugadores.html?ES']").attr('href', 'Dos_Jugadores.html?ES');
+					$("a[href='Main.html?EN']").attr('href', 'Main.html?ES');
+					if (music!=="false"){
+					$("a[href='Main.html?']").attr('href', 'Main.html?ES');
+					}
+					else{
+					$("a[href='Main.html?']").attr('href', 'Main.html?ESOFF');
+					}
+				}
+				
+				if (music!=="false"){
+					$(".sound").prop('muted', false);
+					localStorage.removeItem("music");
+				}
+				else{
+					$(".sound").prop('muted', true);
+				}
+				
+			});	
+		</script>
+	</body>
+	
+</html>

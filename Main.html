@@ -1,0 +1,288 @@
+<!--
+* Created by Dario González Fernández, Adrián Soriano Valencia y Raúl Caño Arévalo.
+*/-->
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Demon's Survivor</title>
+		<link rel="stylesheet" type="text/css" href="estilo.css">
+		<link rel="shortcut icon" type="image/png" href="..\Demon's Survivor\Interfaz\favicon.png"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<audio class="sound" src="Sonido\intro.mp3" autoplay loop></audio>
+		
+	</head>
+
+	<body id="cuerpo">
+	<div id="bg">
+	<div id="contenedorTitulo">
+		<img id="imagenTitulo" src="..\Demon's Survivor\Interfaz\titulo.png">
+	</div>
+	
+	<div id="contenedorMain">
+			<div id="contenedorBotones">
+				<div id="boton1">
+			
+					<a href="ElegirNumJugador.html?ES" style="cursor:url(Interfaz/cursorPointer.png), pointer">
+					<img id="bjugar" src="..\Demon's Survivor\Interfaz\bjugar.png">
+					</a>
+	
+				</div>
+				
+				<div id="boton2">
+					<img id="binstrucciones" src="..\Demon's Survivor\Interfaz\binstrucciones.png" style="cursor:url(Interfaz/cursorPointer.png), pointer">
+				</div>
+				
+				<div id="boton3">
+					<img id="bpuntuaciones" src="..\Demon's Survivor\Interfaz\bpunt.png" style="cursor:url(Interfaz/cursorPointer.png), pointer">
+				</div>
+				
+				<div id="boton4">
+					<img id="bcreditos" src="..\Demon's Survivor\Interfaz\bcreditos.png" style="cursor:url(Interfaz/cursorPointer.png), pointer">
+				</div>
+				
+				
+			</div>	
+			
+			<div id="bOpciones">
+				<div id="boton5">
+				<img id="bengland" src="..\Demon's Survivor\Interfaz\bengland.png" style="cursor:url(Interfaz/cursorPointer.png), pointer">
+				</div>
+				
+				<div id="boton6">
+				<img id="bsoundOff" src="..\Demon's Survivor\Interfaz\bsoundOff.png" style="cursor:url(Interfaz/cursorPointer.png), pointer">
+				</div>
+			</div>		
+		</div>
+	<div id="footAutores">
+		<footer id="autores">Copyright © Raúl Caño, Darío González y Adrián Soriano.</footer>
+		</div>
+	</div>
+	
+	
+		
+		<script>
+			$(document).ready(function(){	
+				
+				
+				guardar_localStorage();
+				obtener_localStorage();
+				
+				
+				
+				function guardar_localStorage(){
+					
+					if(!localStorage.getItem("highscore")){
+						let scores = new Array(10);
+						
+						for (var i=0; i<10; i++){
+							scores[i]=0;
+						}
+						//scores[5]=723;
+					console.log("acabo de guardar");
+					localStorage.setItem("highscore", JSON.stringify(scores));
+					}else{
+						console.log("entonces no hago nada");
+					}
+				}
+				
+				var prue = obtener_localStorage();
+				
+				function obtener_localStorage(){
+				
+					let punt_prueba = localStorage.getItem("highscore");
+					punt_prueba = JSON.parse(punt_prueba);
+					console.log(punt_prueba[5] + "holakase");
+					console.log(punt_prueba[7] + "holakase");
+					console.log(punt_prueba + "ARRAYCOMPLETO");
+					
+					return punt_prueba;
+				}
+				
+				//Sonido
+				var audioSelect = document.createElement('audio');
+				audioSelect.setAttribute('src', 'Sonido/select.mp3');
+				audioSelect.className = "sound";
+				
+				var parameters = location.search.substring(1).split("&").toString();
+				
+				//localStorage.clear();
+				
+				var music;
+				
+				if(parameters ==="EN"){
+					english();
+				}
+				else if(parameters ==="ESOFF"){
+					spanish();
+					$("#bsoundOff").attr('src', "Interfaz/bsoundOn.png");
+					$(".sound").prop('muted', true);
+					audioSelect.muted = true;
+					localStorage.setItem('music', false);
+				}
+				else if(parameters ==="ENOFF"){
+					english();
+					$("#bsoundOff").attr('src', "Interfaz/bsoundOn.png");
+					$(".sound").prop('muted', true);
+					audioSelect.muted = true;
+					localStorage.setItem('music', false);
+				}
+				else{
+					spanish();
+				}
+				
+				$("#bengland").click(function(){
+					audioSelect.play();
+					var src = ($(this).attr('src') === "Interfaz/bengland.png") ? english() : spanish();
+					$(this).attr('src', src);					
+				});		
+
+				function english(){
+					$('#bengland').attr('src',"Interfaz/bspain.png");
+					$('#bjugar').attr('src',"Interfaz/bplay.png");
+					$('#binstrucciones').attr('src',"Interfaz/binstructions.png");
+					$('#bpuntuaciones').attr('src',"Interfaz/bscor.png");
+					$('#bcreditos').attr('src',"Interfaz/bcredits.png");
+					$("a[href='ElegirNumJugador.html?ES']").attr('href', 'ElegirNumJugador.html?EN');
+					 
+					 
+					history.pushState(null, '', '?EN');
+				}
+				
+				function spanish(){
+					$('#bengland').attr('src',"Interfaz/bengland.png");
+					$('#bjugar').attr('src',"Interfaz/bjugar.png");
+					$('#binstrucciones').attr('src',"Interfaz/binstrucciones.png");
+					$('#bpuntuaciones').attr('src',"Interfaz/bpunt.png");
+					$('#bcreditos').attr('src',"Interfaz/bcreditos.png");
+					$("a[href='ElegirNumJugador.html?EN']").attr('href', 'ElegirNumJugador.html?ES');
+					history.pushState(null, '', '?ES');					
+				}
+				
+				$("#bsoundOff").click(function(){
+					audioSelect.play();
+					var src = ($(this).attr('src') === "Interfaz/bsoundOn.png") ? sonidoON() : sonidoOFF();
+					$(this).attr('src', src);					
+				});	
+				
+				function sonidoON(){
+						$("#bsoundOff").attr('src', "Interfaz/bsoundOff.png");
+						$(".sound").prop('muted', false);
+						audioSelect.muted = false;
+						localStorage.setItem('music', true);
+						console.log(localStorage.getItem('music'));
+				}
+				
+				function sonidoOFF(){
+						$("#bsoundOff").attr('src', "Interfaz/bsoundOn.png");
+						$(".sound").prop('muted', true);
+						audioSelect.muted = true;
+						localStorage.setItem('music', false);
+						console.log(localStorage.getItem('music'));
+				}
+
+				
+				
+				$("#bpuntuaciones").click(function(){
+					var cont = 0;
+					audioSelect.play();
+					parameters = location.search.substring(1).split("&").toString();
+					$('#contenedorMain, #imagenTitulo, #footAutores').hide();
+					
+					if(parameters ==="ES"){
+						$("#bg").append('<div id="divscoreMain"><img id="bestscoreMain" src="Interfaz/mejorespuntuaciones.png"/></div>');
+						$("#bg").append('<div id="divTablaPunt"><p id="puntuacionJ1">Puntuación: </p>');
+						for (var i=0; i<10; i++){
+							
+							if (prue[i] != 0){
+							var num = i+1;
+							$("#divTablaPunt").append('<div id="divTablaPunt' + i + '"><p id="puntuacionJ1">' + num + " : " + prue[i] +'</p>');
+							}else{
+								cont++;
+							}
+							if (cont == 10){
+							$("#divTablaPunt").append('<div id="divTablaPunt"><p id="puntuacionJ1">No hay puntuaciones</p>');
+							}
+						}
+						$("#bg").append('</div>');
+						//poner puntuaciones
+						$("#bg").append('<div id="divvolverscoreMain"><img id="bvolverscoreMain" src="Interfaz/bvolver.png" style="cursor:url(Interfaz/cursorPointer.png), pointer"/></div>');
+					}
+					else{
+						$("#bg").append('<div id="divscoreMain"><img id="bestscoreMain" src="Interfaz/bestscores.png"/></div>');
+						//poner puntuaciones
+						$("#bg").append('<div id="divvolverscoreMain"><img id="bvolverscoreMain" src="Interfaz/breturn.png" style="cursor:url(Interfaz/cursorPointer.png), pointer"/></div>');
+					}
+				});
+
+				$("#cuerpo").on('click','#bvolverscoreMain', function(){
+					audioSelect.play();
+					$("#divvolverscoreMain, #divscoreMain, #divTablaPunt").remove();			
+						$('#contenedorMain, #imagenTitulo, #footAutores').show();				
+				});
+
+				$("#bcreditos").click(function(){
+					audioSelect.play();
+					parameters = location.search.substring(1).split("&").toString();
+					$('#contenedorMain, #imagenTitulo, #footAutores').hide();
+					
+					if(parameters ==="ES"){
+						$("#bg").append('<div id="divcreditsMain"><img id="creditsMain" src="Interfaz/creditos.png"/></div>');
+						$("#bg").append('<div id="contenedorCreditos"></div>');
+						$("#contenedorCreditos").append('<div id="textoCreditos"><p><font>Este juego ha sido creado por alumnos del grado en Diseño y Desarrollo de Videojuegos. El equipo de trabajo está compuesto por:</font></p></div>');
+						$("#contenedorCreditos").append('<div id="contEquipo"><div id="divRaul"><div id="raulImagen"><img id="raul" src="Interfaz/raul.gif"/></div><div id="raulTexto"><p id="raulFuente"><font>Raúl Caño Arévalo</font></p></div></div><div id="divDario"><div id="darioTexto"><p id="darioFuente"><font>Darío González Fernández</font></p></div><div id="darioImagen"><img id="dario" src="Interfaz/dario.gif"/></div></div><div id="divAdrian"><div id="adrianImagen"><img id="adrian" src="Interfaz/adrian.gif"/></div><div id="adrianTexto"><p id="adrianFuente"><font>Adrián Soriano Valencia</font></p></div></div>');
+						$("#contenedorCreditos").append('<div id="textoCreditos2"><p><font>CONTACTO: grupoclasedar@gmail.com</font></p></div>');
+						$("#bg").append('<div id="divvolvercreditsMain"><img id="bvolvercreditsMain" src="Interfaz/bvolver.png" style="cursor:url(Interfaz/cursorPointer.png), pointer"/></div>');
+					}
+					else{
+						$("#bg").append('<div id="divcreditsMain"><img id="creditsMain" src="Interfaz/credits.png"/></div>');
+						$("#bg").append('<div id="contenedorCreditos"></div>');
+						$("#contenedorCreditos").append('<div id="textoCreditos"><p><font>This game has been created by Design and Development of Videogames degree students. The work team is composed by:</font></p></div>');
+						$("#contenedorCreditos").append('<div id="contEquipo"><div id="divRaul"><div id="raulImagen"><img id="raul" src="Interfaz/raul.gif"/></div><div id="raulTexto"><p id="raulFuente"><font>Raúl Caño Arévalo</font></p></div></div><div id="divDario"><div id="darioTexto"><p id="darioFuente"><font>Darío González Fernández</font></p></div><div id="darioImagen"><img id="dario" src="Interfaz/dario.gif"/></div></div><div id="divAdrian"><div id="adrianImagen"><img id="adrian" src="Interfaz/adrian.gif"/></div><div id="adrianTexto"><p id="adrianFuente"><font>Adrián Soriano Valencia</font></p></div></div>');
+						$("#contenedorCreditos").append('<div id="textoCreditos2"><p><font>CONTACT: grupoclasedar@gmail.com</font></p></div>');
+						$("#bg").append('<div id="divvolvercreditsMain"><img id="bvolvercreditsMain" src="Interfaz/breturn.png" style="cursor:url(Interfaz/cursorPointer.png), pointer"/></div>');
+					}					
+				});
+				
+				$("#cuerpo").on('click','#bvolvercreditsMain', function(){
+					audioSelect.play();
+					$("#divcreditsMain,#contenedorCreditos,#divvolvercreditsMain").remove();			
+						$('#contenedorMain, #imagenTitulo, #footAutores').show();				
+				});
+				
+				$("#binstrucciones").click(function(){
+					audioSelect.play();
+					parameters = location.search.substring(1).split("&").toString();
+					$('#contenedorMain, #imagenTitulo, #footAutores').hide();
+					
+					if(parameters ==="ES"){
+						$("#bg").append('<div id="divinstMain"><img id="instMain" src="Interfaz/instrucciones.png"/></div>');
+						$("#bg").append('<div id="contenedorInstrucciones"></div>');
+						$("#contenedorInstrucciones").append('<div id="divreglas"><div id="imgReglas"><img id="reglas" src="Interfaz/reglas.png"/></div><ul id="listaReglas"><li type="circle"><p id="pItemsLista"><font><img id="life" src="Interfaz/heart.gif" align="middle"/>3 vidas por nivel</li><li type="circle"><p id="pItemsLista"><font>Esquiva a las oleadas de enemigos para sobrevivir<img id="enemy" src="Interfaz/enemy.png"/></li><li type="circle"><p id="pItemsLista"><font><img id="coin" src="Interfaz/coin.gif"/>Consigue monedas para sumar puntos</li><li type="circle"><p id="pItemsLista"><font>Protección para un ataque recibido<img id="shield" src="Interfaz/shield.png" align="middle"/></li><li type="circle"><p id="pItemsLista"><font><img id="velocity" src="Interfaz/boots.png"/>Velocidad aumentada hasta recibir daño</li><ul></div>');
+						$("#contenedorInstrucciones").append('<div id="divcontroles"><div id="imgControles"><img id="controles" src="Interfaz/controles.png"/></div><div id="jugadores"><div id="div1jugador"><div id="imgJugador1"><img id="jugador1" src="Interfaz/jugador1.png"/></div><div id="imgControles1"><img id="controles1" src="Interfaz/controles1.png"/></div></div><div id="div2jugador"><div id="imgJugador2"><img id="jugador2" src="Interfaz/jugador2.png"/></div><div id="imgControles2"><img id="controles1" src="Interfaz/controles2.png"/></div></div></div></div>');
+						$("#divcontroles").append('<div id="divpausa"><div id="divImgPausa"><img id="controlPausa" src="Interfaz/pausa.png"/></div><div id="divTeclasPausa"><div id="divBotonPausa"><img id="botonPausa" src="Interfaz/bpause.png"/></div><div id="divSpace"><img id="keySpace" src="Interfaz/keySpace.png"/></div><div id="divKeyP"><img id="keyP" src="Interfaz/keyP.png"/></div></div>');
+						$("#bg").append('<div id="divvolverinstMain"><img id="bvolverinstMain" src="Interfaz/bvolver.png" style="cursor:url(Interfaz/cursorPointer.png), pointer"/></div>');
+					}
+					else{
+						$("#bg").append('<div id="divinstMain"><img id="instMain" src="Interfaz/instructions.png"/></div>');
+						$("#bg").append('<div id="contenedorInstrucciones"></div>');
+						$("#contenedorInstrucciones").append('<div id="divreglas"><div id="imgReglas"><img id="reglas" src="Interfaz/rules.png"/></div><ul id="listaReglas"><li type="circle"><p id="pItemsLista"><font><img id="life" src="Interfaz/heart.gif" align="middle"/>3 lives per level</li><li type="circle"><p id="pItemsLista"><font>Dodge the waves of enemies to survive<img id="enemy" src="Interfaz/enemy.png"/></li><li type="circle"><p id="pItemsLista"><font><img id="coin" src="Interfaz/coin.gif"/>Get coins to score points</li><li type="circle"><p id="pItemsLista"><font>Protection for one hit<img id="shield" src="Interfaz/shield.png" align="middle"/></li><li type="circle"><p id="pItemsLista"><font><img id="velocity" src="Interfaz/boots.png"/>Increased speed until receiving damage</li><ul></div>');
+						$("#contenedorInstrucciones").append('<div id="divcontroles"><div id="imgControles"><img id="controles" src="Interfaz/controls.png"/></div><div id="jugadores"><div id="div1jugador"><div id="imgJugador1"><img id="jugador1" src="Interfaz/player1.png"/></div><div id="imgControles1"><img id="controles1" src="Interfaz/controles1.png"/></div></div><div id="div2jugador"><div id="imgJugador2"><img id="jugador2" src="Interfaz/player2.png"/></div><div id="imgControles2"><img id="controles1" src="Interfaz/controles2.png"/></div></div></div></div>');
+						$("#divcontroles").append('<div id="divpausa"><div id="divImgPausa"><img id="controlPausa" src="Interfaz/pause.png"/></div><div id="divTeclasPausa"><div id="divBotonPausa"><img id="botonPausa" src="Interfaz/bpause.png"/></div><div id="divSpace"><img id="keySpace" src="Interfaz/keySpace.png"/></div><div id="divKeyP"><img id="keyP" src="Interfaz/keyP.png"/></div></div>');
+						$("#bg").append('<div id="divvolverinstMain"><img id="bvolverinstMain" src="Interfaz/breturn.png" style="cursor:url(Interfaz/cursorPointer.png), pointer"/></div>');
+					}
+				});
+				
+				$("#cuerpo").on('click','#bvolverinstMain', function(){
+					audioSelect.play();
+					$("#divinstMain, #contenedorInstrucciones, #divvolverinstMain").remove();			
+						$('#contenedorMain, #imagenTitulo, #footAutores').show();				
+				});
+								
+			});	
+		</script>
+		
+	</body>
+	
+</html>
