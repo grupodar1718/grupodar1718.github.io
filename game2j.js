@@ -97,7 +97,7 @@ function Restart(numVidasActualJ1, numVidasActualJ2 , RestartByGover, quiereSali
   pj.yPos = 275;
   pj2.yPos = 275;
 	
-	toSecond=20;
+	toSecond=200000;
 	
 	if(RestartByGover && !quiereSalir){
 		$("#divVidasJ2").append('<img id="imgVida6" src="Interfaz/heart.gif">');
@@ -1388,7 +1388,7 @@ function leveldown(){
 
 toHour=0;
 toMinute=0;
-toSecond=25;
+toSecond=200000;
 
 function countDown(){
 	

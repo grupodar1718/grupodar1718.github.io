@@ -122,7 +122,7 @@ function Restart(numVidasActual, RestartByGover){
 	pj.score = 0;
 	
 	
-	toSecond=20;
+	toSecond=45;
 	$('#Ctimer').empty();
 	$('#Ctimer').append(toMinute+":"+ toSecond);
 	
@@ -1232,7 +1232,7 @@ function leveldown(){
 
 toHour=0;
 toMinute=0;
-toSecond=4;
+toSecond=45;
 
 function countDown(){
 	
