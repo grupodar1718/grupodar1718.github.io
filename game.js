@@ -1580,7 +1580,7 @@ function countDown(){
 				function levelCompleted(){
         pauseSpawn();
 				audioVictory.play();
-				
+				obtener_localStorage(pj.score);
         pause = true;
 
 				
