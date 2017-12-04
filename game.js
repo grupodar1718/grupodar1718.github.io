@@ -1592,7 +1592,7 @@ function countDown(){
 					$("#intLevelComplete").append('<div id="divLevelComplete"><img id="levelcomplete" src="Interfaz/nivelcompletado.png"/></div>');
 					$("#intLevelComplete").append('<div id="divPuntPartida"><img id="imgScoreGover" src="Interfaz/puntuacion.png"/></div>');
 					$("#intLevelComplete").append('<div id="divDesglosePunt"></div>');
-					$("#divDesglosePunt").append('<ul id="listaReglas"><li type="circle"><p id="pItemsLista"><font><img id="life" src="Interfaz/drake.png" align="middle"/>Nivel completado: 500</li><li type="circle"><p id="pItemsLista"><font><img id="life" src="Interfaz/coin.gif" align="middle"/>Monedas: '+ contMonedas + '</li><li type="circle"><p id="pItemsLista"><font><img id="coin" src="Interfaz/heart.gif"/>Recuento de vidas: ' + contVidas + ' </li></ul>');
+					$("#divDesglosePunt").append('<ul id="listaReglas"><li type="circle"><p id="pItemsLista"><font><img id="life" src="Interfaz/dragon.png" align="middle"/>Nivel completado: 500</li><li type="circle"><p id="pItemsLista"><font><img id="life" src="Interfaz/coin.gif" align="middle"/>Monedas: '+ contMonedas + '</li><li type="circle"><p id="pItemsLista"><font><img id="coin" src="Interfaz/heart.gif"/>Recuento de vidas: ' + contVidas + ' </li></ul>');
 					$("#intLevelComplete").append('<div id="botonesCompleted"><div id="divReiniciar"><img id="breiniciarcompleted" src="Interfaz/breiniciar.png" style="cursor:url(Interfaz/cursorPointer.png), pointer"/></div><div id="divBtnSalir"><img id="bsalircompleted" src="Interfaz/bsalir.png" style="cursor:url(Interfaz/cursorPointer.png), pointer"/></div>');
 					
 					if (!nextLevel){
@@ -1607,7 +1607,7 @@ function countDown(){
 					$("#intLevelComplete").append('<div id="divLevelComplete"><img id="levelcomplete" src="Interfaz/levelcompleted.png"/></div>');
 					$("#intLevelComplete").append('<div id="divPuntPartida"><img id="imgScoreGover" src="Interfaz/score.png"/></div>');
 					$("#intLevelComplete").append('<div id="divDesglosePunt"></div>');
-					$("#divDesglosePunt").append('<ul id="listaReglas"><li type="circle"><p id="pItemsLista"><font><img id="life" src="Interfaz/drake.png" align="middle"/>Level completed: 500</li><li type="circle"><p id="pItemsLista"><font><img id="life" src="Interfaz/coin.gif" align="middle"/>Coins: '+ contMonedas + '</li><li type="circle"><p id="pItemsLista"><font><img id="coin" src="Interfaz/heart.gif"/>Life count: ' + contVidas + ' </li></ul>');
+					$("#divDesglosePunt").append('<ul id="listaReglas"><li type="circle"><p id="pItemsLista"><font><img id="life" src="Interfaz/dragon.png" align="middle"/>Level completed: 500</li><li type="circle"><p id="pItemsLista"><font><img id="life" src="Interfaz/coin.gif" align="middle"/>Coins: '+ contMonedas + '</li><li type="circle"><p id="pItemsLista"><font><img id="coin" src="Interfaz/heart.gif"/>Life count: ' + contVidas + ' </li></ul>');
 					$("#intLevelComplete").append('<div id="botonesCompleted"><div id="divReiniciar"><img id="breiniciarcompleted" src="Interfaz/brestart.png" style="cursor:url(Interfaz/cursorPointer.png), pointer"/></div><div id="divBtnSalir"><img id="bsalircompleted" src="Interfaz/bexit.png" style="cursor:url(Interfaz/cursorPointer.png), pointer"/></div>');
 					
 						if (!nextLevel){
