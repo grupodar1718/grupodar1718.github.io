@@ -1,31 +1,32 @@
-ï»¿title Diagrama de Estados
+title Diagrama de Estados
 
-MenÃº->Partida: Jugar()
-Partida->MenÃº: Atras()
+Menú->Jugar: Jugar()
+Jugar->Menú: Atras()
 
-MenÃº->Opciones: Opciones()
-Opciones->MenÃº: Atras()
+Menú->Instrucciones: Instrucciones()
+Instrucciones->Menú: Atras()
 
+Menú->Puntuaciones: Puntuaciones()
+Puntuaciones->Menú: Atras()
 
+Menú->Créditos: Créditos()
+Créditos->Menú: Atras()
 
-MenÃº->CrÃ©ditos: CrÃ©ditos()
-CrÃ©ditos->MenÃº: Atras()
+Jugar->Selección de nº de jugadores: 1 Jugador()
+Jugar->Selección de nº de jugadores: 2 Jugadores(Sólo escritorio)
+Selección de nº de jugadores->Jugar: Atras()
 
-Partida->SelecciÃ³n de nivel: 1 Jugador()
-Partida->SelecciÃ³n de nivel: 2 Jugadores(SÃ³lo escritorio)
-SelecciÃ³n de nivel->Partida: Atras()
+Selección de nº de jugadores->1Jugador: 1Jugador()
+1Jugador->Menú: Menú Principal()
+Selección de nº de jugadores->2Jugadores: 2Jugadores()
+2Jugadores->Menú: Menú Principal()
 
-SelecciÃ³n de nivel->Nivel 1: Nivel 1()
-Nivel 1->MenÃº: MenÃº Principal()
-SelecciÃ³n de nivel->Nivel 2: Nivel 2()
-Nivel 2->MenÃº: MenÃº Principal()
+1Jugador->Game Over: Perder()
+2Jugadores->Game Over: Perder()
 
-Nivel 1->Game Over: Perder()
-Nivel 2->Game Over: Perder()
-
-Game Over->SelecciÃ³n de nivel: Reintentar()
-Game Over->MenÃº: MenÃº Principal()
-
+Game Over->1Jugador: Reintentar()
+Game Over->2Jugadores: Reintentar()
+Game Over->Menú: Menú Principal()
 
 
 https://www.websequencediagrams.com/
