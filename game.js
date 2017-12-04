@@ -391,8 +391,8 @@ console.log(body.offsetWidth);
 
 /////TAMAÑO DEL CANVAS EN FUNCION DE TAMAÑO DE VENTANA
 
-canvas.width = body.offsetWidth * 0.41666667;
-canvas.height = body.offsetHeight * 0.6322444;
+canvas.width = body.offsetWidth * 0.4;
+canvas.height = body.offsetHeight * 0.6;
 
 //////SI SE REDIMENSIONA LA VENTANA, SE VUELVE A REDIMENSIONAR EL CANVAS
 window.addEventListener('resize', function(){
@@ -1071,7 +1071,7 @@ function endGame(){
 		$("#contGameOver").append('<div id="botonesGameOver"><div id="divReintentarOver"><img id="breintentarover" src="Interfaz/btryagain.png" style="cursor:url(Interfaz/cursorPointer.png), pointer"/></div><div id="divBtnScore"><img id="bpuntuacionesover" src="Interfaz/bscores.png" style="cursor:url(Interfaz/cursorPointer.png), pointer"/></div><div id="divBtnSalirOver"><img id="bsalirover" src="Interfaz/bexit.png" style="cursor:url(Interfaz/cursorPointer.png), pointer"/></div></div></div>');
 	
 	}
-	obtener_localStorage(pj.lifes);
+	obtener_localStorage(pj.score);
 }
 
 document.onkeydown = move;
@@ -1199,7 +1199,7 @@ function leveldown(){
 
 toHour=0;
 toMinute=0;
-toSecond=5;
+toSecond=10;
 
 function countDown(){
 	

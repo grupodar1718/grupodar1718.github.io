@@ -430,10 +430,10 @@ canvas.height = body.offsetHeight * 0.6;
 //////SI SE REDIMENSIONA LA VENTANA, SE VUELVE A REDIMENSIONAR EL CANVAS
 window.addEventListener('resize', function(){
 	console.log('resized');
-	canvas.width = body.offsetWidth * 0.41666667;
-  canvas.height = body.offsetHeight * 0.63224447;
-  	//canvas.width = body.offsetWidth * 0.4;
-  //canvas.height = body.offsetHeight * 0.6;
+	//canvas.width = body.offsetWidth * 0.41666667;
+  //canvas.height = body.offsetHeight * 0.63224447;
+  	canvas.width = body.offsetWidth * 0.4;
+  canvas.height = body.offsetHeight * 0.6;
   var ctx = canvas.getContext("2d");
   ctx.clearRect(0,0,800,600);
   ctx.drawImage(fondoImg, 0, 0);
