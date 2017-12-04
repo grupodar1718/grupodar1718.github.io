@@ -65,7 +65,7 @@ var nextLevel = false;
 var salir = false;
 var quiereSalir = false;
 
-function Restart(numVidasActualJ1, numVidasActualJ2 , RestartByGover){
+function Restart(numVidasActualJ1, numVidasActualJ2 , RestartByGover, quiereSalir){
 	skeletons = [];
 	vampires = [];
 	demons = [];
@@ -106,7 +106,7 @@ function Restart(numVidasActualJ1, numVidasActualJ2 , RestartByGover){
 		$("#divVidasJ1").append('<img id="imgVida3" src="Interfaz/heart.gif">');
 		$("#divVidasJ1").append('<img id="imgVida2" src="Interfaz/heart.gif">');
 		$("#divVidasJ1").append('<img id="imgVida1" src="Interfaz/heart.gif">');
-	}
+	}else{
 	
 	switch(numVidasActualJ1) {
     case 3:
@@ -141,6 +141,7 @@ function Restart(numVidasActualJ1, numVidasActualJ2 , RestartByGover){
         break;
 	
 	}
+}
 
   //countDown();
 
@@ -1426,7 +1427,7 @@ function countDown(){
 
 	function english(){
 		$('#pausa').attr('src',"Interfaz/pause.png");
-		$('#level').attr('src',"Interfaz/level1.png");
+		$('#level').attr('src',"Interfaz/versus.png");
 		$('#bcomenzar').attr('src',"Interfaz/bstart.png");
 		$("a[href='UnJugador.html?ES']").attr('href', 'UnJugador.html?EN');
 		$("a[href='DosJugadores.html?ES']").attr('href', 'DosJugadores.html?EN');
@@ -1437,7 +1438,7 @@ function countDown(){
 				
 	function spanish(){
 		$('#pausa').attr('src',"Interfaz/pausa.png");
-		$('#level').attr('src',"Interfaz/nivel1.png");
+		$('#level').attr('src',"Interfaz/versus.png");
 		$('#bcomenzar').attr('src',"Interfaz/bcomenzar.png");
 		$("a[href='UnJugador.html?ES']").attr('href', 'UnJugador.html?ES');
 		$("a[href='DosJugadores.html?ES']").attr('href', 'DosJugadores.html?ES');
@@ -1574,7 +1575,7 @@ function countDown(){
 					
 					var numVidasActualJ1 = pj.lifes;
 					var numVidasActualJ2 = pj2.lifes;
-					Restart(numVidasActualJ1, numVidasActualJ2, RestartByGover);
+					Restart(numVidasActualJ1, numVidasActualJ2, RestartByGover, quiereSalir);
 					console.log(pj.score);
 					pj.score = 0;
 					console.log(pj.score);

@@ -133,7 +133,8 @@ function Restart(numVidasActual, RestartByGover){
 		$("#divVidasContenedor").append('<img id="imgVida3" src="Interfaz/heart.gif">');
 		$("#divVidasContenedor").append('<img id="imgVida2" src="Interfaz/heart.gif">');
 		$("#divVidasContenedor").append('<img id="imgVida1" src="Interfaz/heart.gif">');
-	}
+	}else{
+		
 	switch(numVidasActual) {
     case 3:
         break;
@@ -148,6 +149,7 @@ function Restart(numVidasActual, RestartByGover){
         break;
 		
 	}
+}
 
   //countDown();
 
