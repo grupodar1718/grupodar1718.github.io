@@ -1237,7 +1237,7 @@ function endGame(){
 			if (pj.score < pj2.score){
 				$("#contGameOver").append('<div id="JugGanador"><p id="puntuacionJ1">Jugador 2</p>');
 			}else if(pj.score > pj2.score){
-				$("#contGameOver").append('<div id="JugGanador"><p id="puntuacionJ1">Jugador 1</p>');
+				$("#contGameOver").append('<div id="JugGanador"><p id="puntuacionJ1">Jugador 2</p>');
 			}else{
 				$("#contGameOver").append('<div id="JugGanador"><p id="puntuacionJ1">Empate</p>');
 			}
@@ -1249,17 +1249,6 @@ function endGame(){
 	else{
 		$("#interfaz").append('<div id="contGameOver"/>');
 		$("#contGameOver").append('<div id="divTituloGameOver"><img id="imgGover" src="Interfaz/gameover.png"/></div>');
-		$("#contGameOver").append('<div id="divGanador"><img id="imgGanador" src="Interfaz/winner.png"/></div>');
-		
-			if (pj.score < pj2.score){
-				$("#contGameOver").append('<div id="JugGanador"><p id="puntuacionJ1">Player 2</p>');
-			}else if(pj.score > pj2.score){
-				$("#contGameOver").append('<div id="JugGanador"><p id="puntuacionJ1">Player 1</p>');
-			}else{
-				$("#contGameOver").append('<div id="JugGanador"><p id="puntuacionJ1">Draw</p>');
-			}
-
-		
 		$("#contGameOver").append('<div id="botonesGameOver"><div id="divReintentarOver"><img id="breintentarover" src="Interfaz/btryagain.png" style="cursor:url(Interfaz/cursorPointer.png), pointer"/></div><div id="divBtnSalirOver"><img id="bsalirover" src="Interfaz/bexit.png" style="cursor:url(Interfaz/cursorPointer.png), pointer"/></div></div></div>');
 	
 	}
@@ -1442,6 +1431,8 @@ function countDown(){
 		$("a[href='UnJugador.html?ES']").attr('href', 'UnJugador.html?EN');
 		$("a[href='DosJugadores.html?ES']").attr('href', 'DosJugadores.html?EN');
 		$("a[href='Main.html?ES']").attr('href', 'Main.html?EN');
+		$('#puntuacionJ1').append("Score P1: ");
+		$('#puntuacionJ2').append("Score P2: ");
 	}
 				
 	function spanish(){
@@ -1451,6 +1442,8 @@ function countDown(){
 		$("a[href='UnJugador.html?ES']").attr('href', 'UnJugador.html?ES');
 		$("a[href='DosJugadores.html?ES']").attr('href', 'DosJugadores.html?ES');
 		$("a[href='Main.html?EN']").attr('href', 'Main.html?ES');
+		$('#puntuacionJ1').append("Puntuación J1: ");
+		$('#puntuacionJ2').append("Puntuación J2: ");
 	}
 	
 	if (music!=="false"){
@@ -1737,8 +1730,10 @@ function countDown(){
 				
 				parameters = location.search.substring(1).split("&").toString();
 				$('#puntuacionJ1').empty();
-				$('#puntuacionJ1').append("Puntuación: " + pj.score);
+				
 				if(parameters ==="ES"){
+					$('#puntuacionJ1').append("Puntuación J1: " + pj.score);
+					$('#puntuacionJ1').append("Puntuación J2: " + pj.score);
 					$("#interfaz").append('<div id="intLevelComplete"/>');
 					$("#intLevelComplete").append('<div id="divLevelComplete"><img id="levelcomplete" src="Interfaz/nivelcompletado.png"/></div>');
 					$("#intLevelComplete").append('<div id="divPuntPartida"><img id="imgScoreGover" src="Interfaz/puntuacion.png"/></div>');
@@ -1753,6 +1748,8 @@ function countDown(){
 					}
 				}				
 				else{
+					$('#puntuacionJ1').append("Score P1: " + pj.score);
+					$('#puntuacionJ2').append("Score P2: " + pj.score);
 					$("#interfaz").append('<div id="intLevelComplete"/>');
 					$("#intLevelComplete").append('<div id="divLevelComplete"><img id="levelcomplete" src="Interfaz/levelcompleted.png"/></div>');
 					$("#intLevelComplete").append('<div id="divPuntPartida"><img id="imgScoreGover" src="Interfaz/score.png"/></div>');

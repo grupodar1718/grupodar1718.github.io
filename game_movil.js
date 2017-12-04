@@ -24,7 +24,7 @@ function obtener_localStorage(puntuacion){
 					var intercambiado = true;
 					while (intercambiado){
 						intercambiado = false;
-						for (var i = 0; i<10-1; i++){
+						for (var i = 0; i<8; i++){
 							if(punt_prueba[i]<punt_prueba[i+1]){
 								aux = punt_prueba[i];
 								punt_prueba[i] = punt_prueba[i+1];
@@ -150,8 +150,6 @@ function Restart(numVidasActual, RestartByGover){
 		
 	}
 
-  //countDown();
-
 }
 
 //Sonido
@@ -259,7 +257,7 @@ function sprite (options) {
     var die = false;
 
     if(that.xSpeed > 0){
-      if (that.xPos > 750){
+      if (that.xPos > body.offsetWidth * 0.8 - 50){
         die = true;
       }
     }else{
@@ -268,7 +266,7 @@ function sprite (options) {
       }
     }
     if(that.ySpeed > 0){
-      if (that.yPos >550){
+      if (that.yPos >body.offsetHeight * 0.79965557 - 50){
         die = true;
       }
     }else{
@@ -284,7 +282,7 @@ function sprite (options) {
     var die = false;
 
     if(that.xSpeed > 0){
-      if (that.xPos > 750){
+      if (that.xPos > body.offsetWidth * 0.8 - 50){
         die = true;
       }
     }else{
@@ -293,7 +291,7 @@ function sprite (options) {
       }
     }
     if(that.ySpeed > 0){
-      if (that.yPos >550){
+      if (that.yPos > body.offsetHeight * 0.79965557 - 50){
         die = true;
       }
     }else{
@@ -308,7 +306,7 @@ function sprite (options) {
   that.checkDemon = function(){
     var die = false;
     if(that.xSpeed > 0){
-      if (that.xPos > 750){
+      if (that.xPos > body.offsetWidth * 0.8 - 50){
         that.xSpeed = -that.xSpeed;
       }
     }else{
@@ -318,7 +316,7 @@ function sprite (options) {
     }
 
     if(that.ySpeed > 0){
-      if (that.yPos >550){
+      if (that.yPos >body.offsetHeight * 0.79965557 - 50){
         die = true;
       }
     }
@@ -330,7 +328,7 @@ function sprite (options) {
     var die = false;
 
     if(that.xSpeed > 0){
-      if (that.xPos > 750){
+      if (that.xPos > body.offsetWidth * 0.8 - 50){
         die = true;
       }
     }else{
@@ -339,7 +337,7 @@ function sprite (options) {
       }
     }
     if(that.ySpeed > 0){
-      if (that.yPos >550){
+      if (that.yPos >body.offsetHeight * 0.79965557 - 50){
         die = true;
       }
     }else{
@@ -510,11 +508,11 @@ function gameLoop () {
 ///////////////////////////////////////////////////////////////////////FUNCIONES DE CHEQUEO DE TODAS LAS COLISIONES ENTRE PJS Y EL MAPA
 
 function checkPosition(pjs){
-  if(pjs.xSpeed > 0 && pjs.xPos <= 750)
+  if(pjs.xSpeed > 0 && pjs.xPos <= body.offsetWidth * 0.8 - 50)
     pjs.xPos += pjs.xSpeed;
   if(pjs.xSpeed < 0 && pjs.xPos >= 3)
     pjs.xPos += pjs.xSpeed;
-  if(pjs.ySpeed > 0 && pjs.yPos <= 550)
+  if(pjs.ySpeed > 0 && pjs.yPos <= body.offsetHeight * 0.79965557 - 50)
     pjs.yPos += pjs.ySpeed;
   if(pjs.ySpeed < 0 && pjs.yPos >= 3)
     pjs.yPos += pjs.ySpeed;
@@ -844,21 +842,21 @@ function createSkeleton(){
   
   switch(skeleton.dir){
     case 0:
-    	skeleton.xPos = Math.floor((Math.random() * 750));
+    	skeleton.xPos = Math.floor((Math.random() * body.offsetWidth * 0.8 - 50));
     	skeleton.ySpeed = 1;
       break;
     case 1:
-    	skeleton.xPos = 750;
-    	skeleton.yPos = Math.floor((Math.random() * 550));
+    	skeleton.xPos = body.offsetWidth * 0.8 - 50;
+    	skeleton.yPos = Math.floor((Math.random() * body.offsetHeight * 0.79965557 - 50));
     	skeleton.xSpeed = -1;
       break;
     case 2:
-    	skeleton.yPos = Math.floor((Math.random() * 550));
+    	skeleton.yPos = Math.floor((Math.random() * body.offsetHeight * 0.79965557 - 50));
     	skeleton.xSpeed = 1;
       break;
     case 3:
-    	skeleton.ypos = 550;
-    	skeleton.xPos = Math.floor((Math.random() * 750));
+    	skeleton.ypos = body.offsetHeight * 0.79965557 - 50;
+    	skeleton.xPos = Math.floor((Math.random() * body.offsetWidth * 0.8 - 50));
     	skeleton.ySpeed = -1;
       break;      
   }
@@ -884,21 +882,21 @@ function createVampire(){
   
   switch(vampire.dir){
     case 0:
-      vampire.xPos = Math.floor((Math.random() * 750));
+      vampire.xPos = Math.floor((Math.random() * body.offsetWidth * 0.8 - 50));
       vampire.ySpeed = 4;
       break;
     case 1:
-      vampire.xPos = 750;
-      vampire.yPos = Math.floor((Math.random() * 550));
+      vampire.xPos = body.offsetWidth * 0.8 - 50;
+      vampire.yPos = Math.floor((Math.random() * body.offsetHeight * 0.79965557 - 50));
       vampire.xSpeed = -4;
       break;
     case 2:
-      vampire.yPos = Math.floor((Math.random() * 550));
+      vampire.yPos = Math.floor((Math.random() * body.offsetHeight * 0.79965557 - 50));
       vampire.xSpeed = 4;
       break;
     case 3:
-      vampire.ypos = 550;
-      vampire.xPos = Math.floor((Math.random() * 750));
+      vampire.ypos = body.offsetHeight * 0.79965557 - 50;
+      vampire.xPos = Math.floor((Math.random() * body.offsetWidth * 0.8 - 50));
       vampire.ySpeed = -4;
       break;      
   }
@@ -924,7 +922,7 @@ function createDemon(){
   
   demon.ySpeed = 1.5;
   demon.xSpeed = 1.5;
-  demon.xPos = Math.floor((Math.random() * 750));
+  demon.xPos = Math.floor((Math.random() * body.offsetWidth * 0.8 - 50));
 
   setInterval(function() {
     demon.xSpeed = -demon.xSpeed;
@@ -953,23 +951,23 @@ function createfireMob(){
   
   switch(fireMob.dir){
     case 0:
-      fireMob.xPos = Math.floor((Math.random() * 750));
+      fireMob.xPos = Math.floor((Math.random() * body.offsetWidth * 0.8 - 50));
       fireMob.yPos = 3;
       fireMob.ySpeed = 1;
       break;
     case 1:
-      fireMob.xPos = 750;
-      fireMob.yPos = Math.floor((Math.random() * 550));
+      fireMob.xPos = body.offsetWidth * 0.8 - 50;
+      fireMob.yPos = Math.floor((Math.random() * body.offsetHeight * 0.79965557 - 50));
       fireMob.xSpeed = -1;
       break;
     case 2:
-      fireMob.yPos = Math.floor((Math.random() * 550));
+      fireMob.yPos = Math.floor((Math.random() * body.offsetHeight * 0.79965557 - 50));
       fireMob.xPos = 3;
       fireMob.xSpeed = 1;
       break;
     case 3:
-      fireMob.ypos = 550;
-      fireMob.xPos = Math.floor((Math.random() * 750));
+      fireMob.ypos = body.offsetHeight * 0.79965557 - 50;
+      fireMob.xPos = Math.floor((Math.random() * body.offsetWidth * 0.8 - 50));
       fireMob.ySpeed = -1;
       break;      
   }
@@ -1034,7 +1032,7 @@ function createShield(){
 
 function move(e){
 
-  if(e.keyCode==39 && pj.xPos<750){
+  if(e.keyCode==39 && pj.xPos<body.offsetWidth * 0.8 - 50){
     pj.xSpeed = speed;
     pj.dir = 2;
   }
@@ -1042,7 +1040,7 @@ function move(e){
     pj.xSpeed = -speed;
     pj.dir = 1;
   }
-  if(e.keyCode==40 && pj.yPos<550){
+  if(e.keyCode==40 && pj.yPos<body.offsetHeight * 0.79965557 - 50){
     pj.ySpeed = speed;
     pj.dir = 0;
   }
@@ -1118,17 +1116,6 @@ pjImg.addEventListener("load", gameLoop);
 
 var SkeletonTimer, VampireTimer, DemonTimer, FireMobTimer, CoinTimer, BootTimer, ShieldTimer;
 var numSkeleton=500, numVampire=2000, numDemon=4000, numFireMob=4000, numCoin=5000, numBoot=10000, numShield=15000;
-
-function increaseDifficulty(){
-	numSkeleton=500;
-	numVampire=2000;
-	numDemon=4000;
-	numFireMob=4000;
-	numCoin=100;
-	numBoot=10000; 
-	numShield=15000;
-	level = 2;
-}
 
 function Timer(callback, delay) {
     var timerId;
@@ -1252,7 +1239,7 @@ function countDown(){
     toSecond=toSecond-1;
 	$('#Ctimer').empty();
 	$('#Ctimer').append(toMinute+":"+ toSecond);
-    if(toSecond<0)
+    if(toSecond<0 && toMinute != 0)
     {
       toSecond=59;
       toMinute=toMinute-1;
@@ -1260,23 +1247,23 @@ function countDown(){
     console.log(toMinute+":"+toSecond);
 
     if(toSecond == 0 && toMinute == 0){
-        pj.score += 500;
-		switch (pj.lifes){
-			case 3:
-			contVidas = 50;
-			break;
-			case 2:
-			contVidas = 30;
-			break;
-			default:
-			break;
-		}
-		pj.score += contVidas;
+      pj.score += 500;
+  		switch (pj.lifes){
+  			case 3:
+  			contVidas = 50;
+  			break;
+  			case 2:
+  			contVidas = 30;
+  			break;
+  			default:
+  			break;
+  		}
+		  pj.score += contVidas;
 			
-		levelCompleted();
-		obtener_localStorage(pj.score);
-		//Restart();
-		increaseDifficulty();
+  		levelCompleted();
+      Restart(pj.lifes, false);
+
+  		obtener_localStorage(pj.score);
 		
     }else if(!pause){
       setTimeout("countDown()",1000);
@@ -1301,6 +1288,7 @@ function countDown(){
 		$("a[href='UnJugador.html?ES']").attr('href', 'UnJugador.html?EN');
 		$("a[href='DosJugadores.html?ES']").attr('href', 'DosJugadores.html?EN');
 		$("a[href='Main.html?ES']").attr('href', 'Main.html?EN');
+		$('#puntuacionJ1').append("Score: ");
 	}
 				
 	function spanish(){
@@ -1310,6 +1298,7 @@ function countDown(){
 		$("a[href='UnJugador.html?ES']").attr('href', 'UnJugador.html?ES');
 		$("a[href='DosJugadores.html?ES']").attr('href', 'DosJugadores.html?ES');
 		$("a[href='Main.html?EN']").attr('href', 'Main.html?ES');
+		$('#puntuacionJ1').append("Puntuación: ");
 	}
 	
 	if (music!=="false"){
@@ -1380,7 +1369,8 @@ function countDown(){
 				$('#bpausaDisabled').prop("style", "cursor:url(Interfaz/cursorPointer.png), pointer");
 				started_pause=true;
 				console.log(started_pause);
-				$("#puntuacionJ1").append(pj.score);				
+				$("#puntuacionJ1").append(pj.score);
+				$("#interfaz").append('<div id="divControles"><div id="divSUP"><div id="divEmpt"><img id="up" src="Interfaz/b_null.png"/></div><div id="divUP"><img id="up" src="Interfaz/b_up.png"/></div><div id="divEmpt"><img id="up" src="Interfaz/b_null.png"/></div></div><div id="divINF"><div id="divLeft"><img id="left" src="Interfaz/b_left.png"/></div><div id="divDown"><img id="down" src="Interfaz/b_down.png"/></div><div id="divRight"><img id="right" src="Interfaz/b_right.png"/></div></div>');
 			});
 	});	
 	
@@ -1630,8 +1620,9 @@ function countDown(){
 				
 				parameters = location.search.substring(1).split("&").toString();
 				$('#puntuacionJ1').empty();
-				$('#puntuacionJ1').append("Puntuación: " + pj.score);
+				
 				if(parameters ==="ES"){
+					$('#puntuacionJ1').append("Puntuación: " + pj.score);
 					$("#interfaz").append('<div id="intLevelComplete"/>');
 					$("#intLevelComplete").append('<div id="divLevelComplete"><img id="levelcomplete" src="Interfaz/nivelcompletado.png"/></div>');
 					$("#intLevelComplete").append('<div id="divPuntPartida"><img id="imgScoreGover" src="Interfaz/puntuacion.png"/></div>');
@@ -1646,6 +1637,7 @@ function countDown(){
 					}
 				}				
 				else{
+					$('#puntuacionJ1').append("Score: " + pj.score);
 					$("#interfaz").append('<div id="intLevelComplete"/>');
 					$("#intLevelComplete").append('<div id="divLevelComplete"><img id="levelcomplete" src="Interfaz/levelcompleted.png"/></div>');
 					$("#intLevelComplete").append('<div id="divPuntPartida"><img id="imgScoreGover" src="Interfaz/score.png"/></div>');
