@@ -1261,9 +1261,10 @@ function countDown(){
 		  pj.score += contVidas;
 			
   		levelCompleted();
+		obtener_localStorage(pj.score);
       Restart(pj.lifes, false);
 
-  		obtener_localStorage(pj.score);
+  		
 		
     }else if(!pause){
       setTimeout("countDown()",1000);

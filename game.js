@@ -1228,9 +1228,11 @@ function countDown(){
 		pj.score += contVidas;
 			
 		levelCompleted();
-    Restart(pj.lifes, false);
-
 		obtener_localStorage(pj.score);
+		
+	Restart(pj.lifes, false);
+
+		
 		
     }else if(!pause){
       setTimeout("countDown()",1000);
@@ -1580,7 +1582,7 @@ function countDown(){
 				function levelCompleted(){
         pauseSpawn();
 				audioVictory.play();
-				obtener_localStorage(pj.score);
+				
         pause = true;
 
 				
