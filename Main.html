@@ -90,11 +90,8 @@
 						for (var i=0; i<10; i++){
 							scores[i]=0;
 						}
-						//scores[5]=723;
-					console.log("acabo de guardar");
 					localStorage.setItem("highscore", JSON.stringify(scores));
 					}else{
-						console.log("entonces no hago nada");
 					}
 				}
 				
@@ -104,9 +101,6 @@
 				
 					let punt_prueba = localStorage.getItem("highscore");
 					punt_prueba = JSON.parse(punt_prueba);
-					console.log(punt_prueba[5] + "holakase");
-					console.log(punt_prueba[7] + "holakase");
-					console.log(punt_prueba + "ARRAYCOMPLETO");
 					
 					return punt_prueba;
 				}
@@ -118,7 +112,7 @@
 				
 				var parameters = location.search.substring(1).split("&").toString();
 				
-				//localStorage.clear();
+
 				
 				var music;
 				
@@ -182,7 +176,6 @@
 						$(".sound").prop('muted', false);
 						audioSelect.muted = false;
 						localStorage.setItem('music', true);
-						console.log(localStorage.getItem('music'));
 				}
 				
 				function sonidoOFF(){
@@ -190,7 +183,6 @@
 						$(".sound").prop('muted', true);
 						audioSelect.muted = true;
 						localStorage.setItem('music', false);
-						console.log(localStorage.getItem('music'));
 				}
 
 				
@@ -217,12 +209,12 @@
 							}
 						}
 						$("#bg").append('</div>');
-						//poner puntuaciones
+
 						$("#bg").append('<div id="divvolverscoreMain"><img id="bvolverscoreMain" src="Interfaz/bvolver.png" style="cursor:url(Interfaz/cursorPointer.png), pointer"/></div>');
 					}
 					else{
 						$("#bg").append('<div id="divscoreMain"><img id="bestscoreMain" src="Interfaz/bestscores.png"/></div>');
-						//poner puntuaciones
+
 						$("#bg").append('<div id="divvolverscoreMain"><img id="bvolverscoreMain" src="Interfaz/breturn.png" style="cursor:url(Interfaz/cursorPointer.png), pointer"/></div>');
 					}
 				});

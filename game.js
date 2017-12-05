@@ -7,7 +7,6 @@ function obtener_localStorage(puntuacion){
 				
 					let punt_prueba = localStorage.getItem("highscore");
 					punt_prueba = JSON.parse(punt_prueba);
-					//console.log(punt_prueba[5] + "Jug1");
 					
 					
 					
@@ -29,7 +28,6 @@ function obtener_localStorage(puntuacion){
 						}
 					}
 					
-					console.log (punt_prueba);
 					localStorage.setItem("highscore", JSON.stringify(punt_prueba));
 					return punt_prueba;
 				}
@@ -126,9 +124,6 @@ function Restart(numVidasActual, RestartByGover){
 	$('#Ctimer').append(toMinute+":"+ toSecond);
 	
 	
-	console.log("Entra en la de restart");
-	console.log(RestartByGover);
-	console.log(numVidasActual + "HASKDHASKDWWQE");
 	if(RestartByGover && !quiereSalir){
 		$("#divVidasContenedor").append('<img id="imgVida3" src="Interfaz/heart.gif">');
 		$("#divVidasContenedor").append('<img id="imgVida2" src="Interfaz/heart.gif">');
@@ -151,7 +146,6 @@ function Restart(numVidasActual, RestartByGover){
 	}
 }
 
-  //countDown();
 
 }
 
@@ -387,7 +381,6 @@ function sprite (options) {
 var canvas = document.getElementById("pjAnimation");
 
 var body = document.body;
-console.log(body.offsetWidth);
 
 /////TAMAÑO DEL CANVAS EN FUNCION DE TAMAÑO DE VENTANA
 
@@ -396,7 +389,6 @@ canvas.height = body.offsetHeight * 0.6;
 
 //////SI SE REDIMENSIONA LA VENTANA, SE VUELVE A REDIMENSIONAR EL CANVAS
 window.addEventListener('resize', function(){
-	console.log('resized');
 	
 	canvas.width = body.offsetWidth * 0.4;
   canvas.height = body.offsetHeight * 0.6;
@@ -507,7 +499,6 @@ function checkSkeletons(){
             endGame();
           }
           shieldCollision = true;
-          console.log("Lifes: "+pj.lifes);
 	        skeletons.splice(i, 1);
 	      }else if(skeletons[i] != null){
 	        if(skeletons[i].checkSkeleton()==true){
@@ -542,7 +533,6 @@ function checkVampires(){
           }
           pj.image = pjImg;
           shieldCollision = true;
-          console.log("Lifes: "+pj.lifes);
           vampires.splice(i, 1);
         }else if(vampires[i] != null){
           if(vampires[i].checkSkeleton()==true){
@@ -577,7 +567,6 @@ function checkDemons(){
           }
           pj.image = pjImg;
           shieldCollision = true;
-          console.log("Lifes: "+pj.lifes);
           demons.splice(i, 1);
         }else if(demons[i] != null){
           if(demons[i].checkDemon()==true){
@@ -612,7 +601,6 @@ function checkfireMobs(){
           }
           pj.image = pjImg;
           shieldCollision = true;
-          console.log("Lifes: "+pj.lifes);
           fireMobs.splice(i, 1);
         }else if(fireMobs[i] != null){
           if(fireMobs[i].checkfireMob()==true){
@@ -647,7 +635,6 @@ function checkFires(){
           }
           shieldCollision = true;
           pj.image = pjImg;
-          console.log("Lifes: "+pj.lifes);
           fires.splice(i, 1);
         }else if(fires[i] != null){
           fires[i].tickCount += 1;
@@ -695,7 +682,6 @@ function checkCoins(){
 		  audioCoin.play();
 		  $('#puntuacionJ1').empty();
 		  $('#puntuacionJ1').append("Puntuación: " + pj.score);
-          console.log("Score: "+pj.score);
           coins.splice(i, 1);
         }else if(coins[i] != null){
           coins[i].update();
@@ -1098,17 +1084,13 @@ function Timer(callback, delay) {
 
     this.levelup = function(){
         window.clearTimeout(timerId);
-        console.log("Level up");
         delay = delay/1.5;
-        console.log(delay);
         timerId = window.setTimeout(callback, delay);
     }
 
     this.leveldown = function(){
       window.clearTimeout(timerId);
-      console.log("Level down");
       delay = delay * 1.5;
-      console.log(delay);
       timerId = window.setTimeout(callback,delay);
     }
 
@@ -1211,7 +1193,6 @@ function countDown(){
       toSecond=59;
       toMinute=toMinute-1;
     }
-    console.log(toMinute+":"+toSecond);
 
     if(toSecond == 0 && toMinute == 0){
         pj.score += 500;
@@ -1242,7 +1223,6 @@ function countDown(){
 //INTERFAZ
 	var music = localStorage.getItem('music');		
 	var parameters = location.search.substring(1).split("&").toString();
-	console.log(parameters);
 	if(parameters ==="EN"){
 		english();
 	}				
@@ -1337,7 +1317,6 @@ function countDown(){
 				$('#bpausaDisabled').prop("src", "Interfaz/bpause.png");
 				$('#bpausaDisabled').prop("style", "cursor:url(Interfaz/cursorPointer.png), pointer");
 				started_pause=true;
-				console.log(started_pause);
 				$("#puntuacionJ1").append(pj.score);				
 			});
 	});	
@@ -1348,11 +1327,10 @@ function countDown(){
 			if (!pause && started_pause){
 			pausa();	
 			}
-			console.log('click');
 							
 		});
 	
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////REINICIARRRRRRRRRRRRRRRRRRR////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////REINICIAR////////////////////////////////
 		$("#interfaz").on('click','#breiniciar', function(){
 			audioSelect.play();
 			$("#breiniciar, #bsalir, #bv, #divreiniciar, #divsalir, #divvolver").remove();
@@ -1375,23 +1353,18 @@ function countDown(){
 					salir = false;
 				}else{
 					if (!$("#contGameOver").length){
-						console.log('Viene de Restart');
 						RestartByGover = false;
 					}else{
 						RestartByGover = true;
 						
-						console.log('Viene de GOVER');
 					}
 					
 					audioStart.play();
 					pause = false;
-					console.log('CUANTOVALE' + pj.lifes);
 					
 					var numVidasActual = pj.lifes;
 					Restart(numVidasActual, RestartByGover);
-					console.log(pj.score);
 					pj.score = 0;
-					console.log(pj.score);
 					leveldown();
 					resumeSpawn();	
 					countDown();
@@ -1624,7 +1597,6 @@ function countDown(){
 				
 				$("#interfaz").on('click','#breiniciarcompleted', function(){
 				audioSelect.play();
-				console.log('clickasdasdasd');
 					$("#divPuntPartida, #divDesglosePunt, #botonesCompleted").remove();
 					if(parameters ==="ES"){
 					
@@ -1689,11 +1661,9 @@ function countDown(){
 				$("#contComienzo").remove();
 					if(parameters ==="ES"){						
 			
-					console.log('SIG LEVEL');
 					}
 					else{
 					
-					console.log('NEXT LEVEL');
 					}
           countDown();
 				});

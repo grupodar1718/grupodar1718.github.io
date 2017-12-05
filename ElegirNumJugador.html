@@ -52,15 +52,11 @@
 				
 					let scores = localStorage.getItem("highscore");
 					scores = JSON.parse(scores);
-					console.log(scores[5] + "elegirnumJ");
-					console.log(scores[7] + "elegirnumJ");
-					//localStorage.setItem("highscore", scores);
 				}
 				
 				
 				var music = localStorage.getItem('music');
 				var parameters = location.search.substring(1).split("&").toString();
-				console.log(parameters);
 				if(parameters ==="EN"){
 					english();
 				}

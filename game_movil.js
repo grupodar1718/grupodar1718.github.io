@@ -1,18 +1,10 @@
 
 //////////////////////////////////////////////////////////////INICIALIZACIÓN DE VARIABLES
-/*		$(document).ready(function(){
-			window.oncontextmenu = function(event) {
-				event.preventDefault();
-				event.stopPropagation();
-				return false;
-			};
-		}
-*/
+
 function obtener_localStorage(puntuacion){
 				
 					let punt_prueba = localStorage.getItem("highscore");
 					punt_prueba = JSON.parse(punt_prueba);
-					//console.log(punt_prueba[5] + "Jug1");
 					
 					
 					
@@ -34,7 +26,6 @@ function obtener_localStorage(puntuacion){
 						}
 					}
 					
-					console.log (punt_prueba);
 					localStorage.setItem("highscore", JSON.stringify(punt_prueba));
 					return punt_prueba;
 				}
@@ -127,9 +118,7 @@ function Restart(numVidasActual, RestartByGover){
 	$('#Ctimer').append(toMinute+":"+ toSecond);
 	
 	
-	console.log("Entra en la de restart");
-	console.log(RestartByGover);
-	console.log(numVidasActual + "HASKDHASKDWWQE");
+
 	if(RestartByGover && !quiereSalir){
 		$("#divVidasContenedor").append('<img id="imgVida3" src="Interfaz/heart.gif">');
 		$("#divVidasContenedor").append('<img id="imgVida2" src="Interfaz/heart.gif">');
@@ -406,21 +395,8 @@ function sprite (options) {
 
 var canvas = document.getElementById("pjAnimation");
 
-/*function vh(v) {
-  var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-  return (v * h) / 100;
-}
-
-function vw(v) {
-  var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-  return (v * w) / 100;
-}*/
-
 var body = document.body;
-console.log(body.offsetWidth);
 
-/*canvas.width = 400;
-canvas.height = 400;*/
 
 /////TAMAÑO DEL CANVAS EN FUNCION DE TAMAÑO DE VENTANA
 
@@ -429,7 +405,6 @@ canvas.height = body.offsetHeight * 0.8;
 
 //////SI SE REDIMENSIONA LA VENTANA, SE VUELVE A REDIMENSIONAR EL CANVAS
 window.addEventListener('resize', function(){
-	console.log('resized');
 	canvas.width = body.offsetWidth * 0.4;
   canvas.height = body.offsetHeight * 0.6;
   var ctx = canvas.getContext("2d");
@@ -488,7 +463,6 @@ function gameLoop () {
         checkPosition(fireMobs[i]);
       }
     }	
-		console.log(pj.stop);
 		pj.update();
 		pj.render();
 
@@ -539,7 +513,6 @@ function checkSkeletons(){
             endGame();
           }
           shieldCollision = true;
-          console.log("Lifes: "+pj.lifes);
 	        skeletons.splice(i, 1);
 	      }else if(skeletons[i] != null){
 	        if(skeletons[i].checkSkeleton()==true){
@@ -574,7 +547,6 @@ function checkVampires(){
           }
           pj.image = pjImg;
           shieldCollision = true;
-          console.log("Lifes: "+pj.lifes);
           vampires.splice(i, 1);
         }else if(vampires[i] != null){
           if(vampires[i].checkSkeleton()==true){
@@ -609,7 +581,7 @@ function checkDemons(){
           }
           pj.image = pjImg;
           shieldCollision = true;
-          console.log("Lifes: "+pj.lifes);
+
           demons.splice(i, 1);
         }else if(demons[i] != null){
           if(demons[i].checkDemon()==true){
@@ -644,7 +616,6 @@ function checkfireMobs(){
           }
           pj.image = pjImg;
           shieldCollision = true;
-          console.log("Lifes: "+pj.lifes);
           fireMobs.splice(i, 1);
         }else if(fireMobs[i] != null){
           if(fireMobs[i].checkfireMob()==true){
@@ -679,7 +650,6 @@ function checkFires(){
           }
           shieldCollision = true;
           pj.image = pjImg;
-          console.log("Lifes: "+pj.lifes);
           fires.splice(i, 1);
         }else if(fires[i] != null){
           fires[i].tickCount += 1;
@@ -727,7 +697,6 @@ function checkCoins(){
 		  audioCoin.play();
 		  $('#puntuacionJ1').empty();
 		  $('#puntuacionJ1').append("Puntuación: " + pj.score);
-          console.log("Score: "+pj.score);
           coins.splice(i, 1);
         }else if(coins[i] != null){
           coins[i].update();
@@ -1130,17 +1099,13 @@ function Timer(callback, delay) {
 
     this.levelup = function(){
         window.clearTimeout(timerId);
-        console.log("Level up");
         delay = delay/1.5;
-        console.log(delay);
         timerId = window.setTimeout(callback, delay);
     }
 
     this.leveldown = function(){
       window.clearTimeout(timerId);
-      console.log("Level down");
       delay = delay * 1.5;
-      console.log(delay);
       timerId = window.setTimeout(callback,delay);
     }
 
@@ -1243,7 +1208,6 @@ function countDown(){
       toSecond=59;
       toMinute=toMinute-1;
     }
-    console.log(toMinute+":"+toSecond);
 
     if(toSecond == 0 && toMinute == 0){
       pj.score += 500;
@@ -1273,7 +1237,7 @@ function countDown(){
 //INTERFAZ
 	var music = localStorage.getItem('music');		
 	var parameters = location.search.substring(1).split("&").toString();
-	console.log(parameters);
+
 	if(parameters ==="EN"){
 		english();
 	}				
@@ -1316,7 +1280,6 @@ function countDown(){
 		audioPause.muted = true;
 		audioOver.muted = true;
 		audioVictory.muted = true;
-		//localStorage.clear();
 	}
 	
 	function quitarVida(num){
@@ -1368,7 +1331,6 @@ function countDown(){
 				$('#bpausaDisabled').prop("src", "Interfaz/bpause.png");
 				$('#bpausaDisabled').prop("style", "cursor:url(Interfaz/cursorPointer.png), pointer");
 				started_pause=true;
-				console.log(started_pause);
 				$("#puntuacionJ1").append(pj.score);
 				$("#interfaz").append('<div id="divControles"><div id="divSUP"><div id="divEmpt"><img id="up" src="Interfaz/b_null.png"/></div><div id="divUP"><img id="up" src="Interfaz/b_up.png"/></div><div id="divEmpt"><img id="up" src="Interfaz/b_null.png"/></div></div><div id="divINF"><div id="divLeft"><img id="left" src="Interfaz/b_left.png"/></div><div id="divDown"><img id="down" src="Interfaz/b_down.png"/></div><div id="divRight"><img id="right" src="Interfaz/b_right.png"/></div></div>');
 			});
@@ -1429,11 +1391,10 @@ function countDown(){
 			if (!pause && started_pause){
 			pausa();	
 			}
-			console.log('click');
 							
 		});
 	
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////REINICIARRRRRRRRRRRRRRRRRRR////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////REINICIAR///////////////////////////////
 		$("#interfaz").on('click','#breiniciar', function(){
 			audioSelect.play();
 			$("#breiniciar, #bsalir, #bv, #divreiniciar, #divsalir, #divvolver").remove();
@@ -1456,23 +1417,18 @@ function countDown(){
 					salir = false;
 				}else{
 					if (!$("#contGameOver").length){
-						console.log('Viene de Restart');
 						RestartByGover = false;
 					}else{
 						RestartByGover = true;
-						
-						console.log('Viene de GOVER');
+
 					}
 					
 					audioStart.play();
 					pause = false;
-					console.log('CUANTOVALE' + pj.lifes);
 					
 					var numVidasActual = pj.lifes;
 					Restart(numVidasActual, RestartByGover);
-					console.log(pj.score);
 					pj.score = 0;
-					console.log(pj.score);
 					leveldown();
 					resumeSpawn();	
 					countDown();
@@ -1705,7 +1661,6 @@ function countDown(){
 				
 				$("#interfaz").on('click','#breiniciarcompleted', function(){
 				audioSelect.play();
-				console.log('clickasdasdasd');
 					$("#divPuntPartida, #divDesglosePunt, #botonesCompleted").remove();
 					if(parameters ==="ES"){
 					
@@ -1770,11 +1725,9 @@ function countDown(){
 				$("#contComienzo").remove();
 					if(parameters ==="ES"){						
 			
-					console.log('SIG LEVEL');
 					}
 					else{
 					
-					console.log('NEXT LEVEL');
 					}
           countDown();
 				});

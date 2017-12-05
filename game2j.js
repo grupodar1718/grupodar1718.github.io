@@ -403,36 +403,22 @@ function sprite (options) {
 
 var canvas = document.getElementById("pjAnimation");
 
-/*function vh(v) {
-  var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-  return (v * h) / 100;
-}
 
-function vw(v) {
-  var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-  return (v * w) / 100;
-}*/
 
 var body = document.body;
-console.log(body.offsetWidth+","+body.offsetHeight);
 
 canvas.width = 800;
 canvas.height = 600;
 
 /////TAMAÑO DEL CANVAS EN FUNCION DE TAMAÑO DE VENTANA
 
-//canvas.width = body.offsetWidth * 0.41666667;
-//canvas.height = body.offsetHeight * 0.63224447;
 
 canvas.width = body.offsetWidth * 0.4;
 canvas.height = body.offsetHeight * 0.6;
 
 //////SI SE REDIMENSIONA LA VENTANA, SE VUELVE A REDIMENSIONAR EL CANVAS
 window.addEventListener('resize', function(){
-	console.log('resized');
-	//canvas.width = body.offsetWidth * 0.41666667;
-  //canvas.height = body.offsetHeight * 0.63224447;
-  	canvas.width = body.offsetWidth * 0.4;
+  canvas.width = body.offsetWidth * 0.4;
   canvas.height = body.offsetHeight * 0.6;
   var ctx = canvas.getContext("2d");
   ctx.clearRect(0,0,800,600);
@@ -521,7 +507,6 @@ function gameLoop () {
     }
 
     if(pj2.lifes > 0){
-      //console.log("Sigo vivo");
       pj2.update();
       pj2.render();
     }else{
@@ -588,7 +573,6 @@ function checkSkeletons(pjs){
       pjs.image = pj2Img;
     }
           pjs.lifes -= 1;
-      console.log(pjs.lifes);
       quitarVida(pjs.lifes, pjs.id);
       
       if(lose()){
@@ -596,7 +580,6 @@ function checkSkeletons(pjs){
             endGame();
           }
           shieldCollision = true;
-          console.log("Lifes: "+pjs.lifes);
           skeletons.splice(i, 1);
         }else if(skeletons[i] != null){
           if(skeletons[i].checkSkeleton()==true){
@@ -635,7 +618,6 @@ function checkVampires(pjs){
       pjs.image = pj2Img;
     }
           shieldCollision = true;
-          console.log("Lifes: "+pjs.lifes);
           vampires.splice(i, 1);
         }else if(vampires[i] != null){
           if(vampires[i].checkSkeleton()==true){
@@ -674,7 +656,6 @@ function checkDemons(pjs){
       pjs.image = pj2Img;
     }
           shieldCollision = true;
-          console.log("Lifes: "+pjs.lifes);
           demons.splice(i, 1);
         }else if(demons[i] != null){
           if(demons[i].checkDemon()==true){
@@ -713,7 +694,6 @@ function checkfireMobs(pjs){
       pjs.image = pj2Img;
     }
           shieldCollision = true;
-          console.log("Lifes: "+pjs.lifes);
           fireMobs.splice(i, 1);
         }else if(fireMobs[i] != null){
           if(fireMobs[i].checkfireMob()==true){
@@ -752,7 +732,6 @@ function checkFires(pjs){
     }else{
       pjs.image = pj2Img;
     }
-          console.log("Lifes: "+pjs.lifes);
           fires.splice(i, 1);
         }else if(fires[i] != null){
           fires[i].tickCount += 1;
@@ -806,7 +785,6 @@ function checkCoins(pjs){
 		  }
       audioCoin.play();
       
-          console.log("Score: "+pjs.score);
           coins.splice(i, 1);
         }else if(coins[i] != null){
           coins[i].update();
@@ -1226,7 +1204,6 @@ function stop(e){
 }
 
 function endGame(){
-  console.log('Entra en endgame');
   pause = true;
   pauseSpawn();
   parameters = location.search.substring(1).split("&").toString();
@@ -1344,7 +1321,6 @@ function beginGame(){
 
 function resumeSpawn(){
   pause = false;
-  //countDown();
   SkeletonTimer.resume();
   VampireTimer.resume();
   DemonTimer.resume();
@@ -1400,7 +1376,6 @@ function countDown(){
       toSecond=59;
       toMinute=toMinute-1;
     }
-    console.log(toMinute+":"+toSecond);
 
     if(toSecond == 0 && toMinute == 0){
         pj.score += 500;
@@ -1417,7 +1392,7 @@ function countDown(){
 
 	var music = localStorage.getItem('music');		
 	var parameters = location.search.substring(1).split("&").toString();
-	console.log(parameters);
+
 	if(parameters ==="EN"){
 		english();
 	}				
@@ -1462,7 +1437,6 @@ function countDown(){
 		audioPause.muted = true;
 		audioOver.muted = true;
 		audioVictory.muted = true;
-		//localStorage.clear();
 	}
 	
 	function quitarVida(num, id){
@@ -1505,7 +1479,6 @@ function countDown(){
 		audioSelect.play();
 		$("#pausa, #reiniciar, #salir, #intPause, #divconfirmar, #bsi, #bno, #divreiniciar, #divsalir, #divvolver").remove();
 		pause = false;
-    //countDown();
     resumeSpawn();
 	}
 	
@@ -1514,14 +1487,12 @@ function countDown(){
 	$("#bcomenzar").click(function(){
 		audioSelect.play();
 		audioStart.play();
-    //countDown();
     beginGame();
 		$("#contComienzo").remove();
 			$("#interfaz").fadeIn( "slow", function() {
 				$('#bpausaDisabled2J').prop("src", "Interfaz/bpause.png");
 				$('#bpausaDisabled2J').prop("style", "cursor:url(Interfaz/cursorPointer.png), pointer");
 				started_pause=true;
-				console.log(started_pause);
 				$("#puntuacionJ1").append(pj.score);
 				$("#puntuacionJ2").append(pj.score);					
 			});
@@ -1533,11 +1504,10 @@ function countDown(){
 			if (!pause && started_pause){
 			pausa();	
 			}
-			console.log('click');
 							
 		});
 	
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////REINICIARRRRRRRRRRRRRRRRRRR////////////////////////////////
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////REINICIAR////////////////////////////////
 		$("#interfaz").on('click','#breiniciar', function(){
 			audioSelect.play();
 			$("#breiniciar, #bsalir, #bv, #divreiniciar, #divsalir, #divvolver").remove();
@@ -1556,32 +1526,25 @@ function countDown(){
 				audioSelect.play();
 				$("#intPause, #divQReiniciar, #divconfirmar, #botonesGameOver, #divLevelComplete, #divTituloGameOver, #divGanador, #JugGanador").remove();
 				if (salir){
-					console.log('Entra en salir correcto');
 					endGame();
 					salir = false;
 				}else{
 					if (!$("#contGameOver").length){
-						console.log('Viene de Restart');
 						RestartByGover = false;
 					}else{
 						RestartByGover = true;
 						
-						console.log('Viene de GOVER');
 					}
 					
 					audioStart.play();
 					pause = false;
-					console.log('CUANTOVALE' + pj.lifes);
 					
 					var numVidasActualJ1 = pj.lifes;
 					var numVidasActualJ2 = pj2.lifes;
 					Restart(numVidasActualJ1, numVidasActualJ2, RestartByGover, quiereSalir);
-					console.log(pj.score);
 					pj.score = 0;
-					console.log(pj.score);
 					leveldown();
 					resumeSpawn();	
-					//countDown();
 					$("#contGameOver").remove();
 				}
 				
@@ -1769,7 +1732,6 @@ function countDown(){
 				
 				$("#interfaz").on('click','#breiniciarcompleted', function(){
 				audioSelect.play();
-				console.log('clickasdasdasd');
 					$("#divPuntPartida, #divDesglosePunt, #botonesCompleted").remove();
 					if(parameters ==="ES"){
 					
