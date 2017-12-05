@@ -99,6 +99,11 @@ var quiereSalir = false;
 var contMonedas = 0;
 var contVidas = 0;
 
+var up = false;
+var down =  false;
+var left = false;
+var right =  false;
+
 function Restart(numVidasActual, RestartByGover){
 	skeletons = [];
 	vampires = [];
@@ -468,6 +473,7 @@ function gameLoop () {
     ctx.clearRect(0,0,800,600);
     ctx.drawImage(fondoImg, 0, 0);
     checkPosition(pj);
+    checkPj();
     for(var i = 0; i < skeletons.length; i++){
       if(skeletons[i] != null){
         checkPosition(skeletons[i]);
@@ -506,6 +512,17 @@ function gameLoop () {
 }
 
 ///////////////////////////////////////////////////////////////////////FUNCIONES DE CHEQUEO DE TODAS LAS COLISIONES ENTRE PJS Y EL MAPA
+
+function checkPj(){
+	if(up)
+		pj.yPos -=3;
+	if(down)
+		pj.yPos += 3;
+	if(left)
+		pj.xPos -= 3;
+	if(right)
+		pj.xPos += 3;
+}
 
 function checkPosition(pjs){
   if(pjs.xSpeed > 0 && pjs.xPos <= body.offsetWidth * 0.8 - 50)
@@ -1374,6 +1391,47 @@ function countDown(){
 				$("#interfaz").append('<div id="divControles"><div id="divSUP"><div id="divEmpt"><img id="up" src="Interfaz/b_null.png"/></div><div id="divUP"><img id="up" src="Interfaz/b_up.png"/></div><div id="divEmpt"><img id="up" src="Interfaz/b_null.png"/></div></div><div id="divINF"><div id="divLeft"><img id="left" src="Interfaz/b_left.png"/></div><div id="divDown"><img id="down" src="Interfaz/b_down.png"/></div><div id="divRight"><img id="right" src="Interfaz/b_right.png"/></div></div>');
 			});
 	});	
+
+	$("#interfaz").on('click', '#divUP', function(){
+		if(pj.ySpeed == 0 && pj.xSpeed == 0){
+			pj.dir = 3;
+			pj.ySpeed = -3;
+		}else{
+			pj.ySpeed = 0;
+			pj.xSpeed = 0;
+		}
+	});
+
+	$("#interfaz").on('click', '#divDown', function(){
+		if(pj.ySpeed == 0 && pj.xSpeed == 0){
+			pj.dir = 0;
+			pj.ySpeed = 3;
+		}else{
+			pj.ySpeed = 0;
+			pj.xSpeed = 0;
+		}
+	});
+
+	$("#interfaz").on('click', '#divRight', function(){
+		if(pj.ySpeed == 0 && pj.xSpeed == 0){
+			pj.dir = 2;
+			pj.xSpeed = 3;
+		}else{
+			pj.ySpeed = 0;
+			pj.xSpeed = 0;
+		}
+	});
+
+	$("#interfaz").on('click', '#divLeft', function(){
+		if(pj.ySpeed == 0 && pj.xSpeed == 0){
+			pj.dir = 1;
+			pj.xSpeed = -3;
+		}else{
+			pj.ySpeed = 0;
+			pj.xSpeed = 0;
+		}
+	});
+
 	
 	//Botón pausa
 	
