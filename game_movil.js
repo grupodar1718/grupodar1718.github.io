@@ -99,11 +99,6 @@ var quiereSalir = false;
 var contMonedas = 0;
 var contVidas = 0;
 
-var up = false;
-var down =  false;
-var left = false;
-var right =  false;
-
 function Restart(numVidasActual, RestartByGover){
 	skeletons = [];
 	vampires = [];
@@ -473,7 +468,6 @@ function gameLoop () {
     ctx.clearRect(0,0,800,600);
     ctx.drawImage(fondoImg, 0, 0);
     checkPosition(pj);
-    checkPj();
     for(var i = 0; i < skeletons.length; i++){
       if(skeletons[i] != null){
         checkPosition(skeletons[i]);
@@ -512,17 +506,6 @@ function gameLoop () {
 }
 
 ///////////////////////////////////////////////////////////////////////FUNCIONES DE CHEQUEO DE TODAS LAS COLISIONES ENTRE PJS Y EL MAPA
-
-function checkPj(){
-	if(up)
-		pj.yPos -=3;
-	if(down)
-		pj.yPos += 3;
-	if(left)
-		pj.xPos -= 3;
-	if(right)
-		pj.xPos += 3;
-}
 
 function checkPosition(pjs){
   if(pjs.xSpeed > 0 && pjs.xPos <= body.offsetWidth * 0.8 - 50)
@@ -1399,6 +1382,7 @@ function countDown(){
 		}else{
 			pj.ySpeed = 0;
 			pj.xSpeed = 0;
+			pj.stop = true;
 		}
 		pj.stop = false;
 	});
@@ -1410,6 +1394,7 @@ function countDown(){
 		}else{
 			pj.ySpeed = 0;
 			pj.xSpeed = 0;
+			pj.stop = true;
 		}
 		pj.stop = false;
 	});
@@ -1421,6 +1406,7 @@ function countDown(){
 		}else{
 			pj.ySpeed = 0;
 			pj.xSpeed = 0;
+			pj.stop = true;
 		}
 		pj.stop = false;
 	});
@@ -1432,6 +1418,7 @@ function countDown(){
 		}else{
 			pj.ySpeed = 0;
 			pj.xSpeed = 0;
+			pj.stop = true;
 		}
 		pj.stop = false;
 	});
