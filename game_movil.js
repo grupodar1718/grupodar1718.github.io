@@ -1400,6 +1400,7 @@ function countDown(){
 			pj.ySpeed = 0;
 			pj.xSpeed = 0;
 		}
+		pj.stop = false;
 	});
 
 	$("#interfaz").on('click', '#divDown', function(){
@@ -1410,6 +1411,7 @@ function countDown(){
 			pj.ySpeed = 0;
 			pj.xSpeed = 0;
 		}
+		pj.stop = false;
 	});
 
 	$("#interfaz").on('click', '#divRight', function(){
@@ -1420,6 +1422,7 @@ function countDown(){
 			pj.ySpeed = 0;
 			pj.xSpeed = 0;
 		}
+		pj.stop = false;
 	});
 
 	$("#interfaz").on('click', '#divLeft', function(){
@@ -1430,6 +1433,7 @@ function countDown(){
 			pj.ySpeed = 0;
 			pj.xSpeed = 0;
 		}
+		pj.stop = false;
 	});
 
 	
