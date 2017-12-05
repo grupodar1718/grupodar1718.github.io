@@ -241,7 +241,6 @@ function sprite (options) {
     
     if(tickCount > that.ticksPerFrame){
       tickCount = 0;
-      
       if(that.frameIndex < numberOfFramesX - 1 && that.stop == false){
         that.frameIndex += 1;
       }else{
@@ -489,7 +488,7 @@ function gameLoop () {
         checkPosition(fireMobs[i]);
       }
     }	
-		
+		console.log(pj.stop);
 		pj.update();
 		pj.render();
 
@@ -1379,48 +1378,48 @@ function countDown(){
 		if(pj.ySpeed == 0 && pj.xSpeed == 0){
 			pj.dir = 3;
 			pj.ySpeed = -3;
+			pj.stop = false;
 		}else{
 			pj.ySpeed = 0;
 			pj.xSpeed = 0;
 			pj.stop = true;
 		}
-		pj.stop = false;
 	});
 
 	$("#interfaz").on('click', '#divDown', function(){
 		if(pj.ySpeed == 0 && pj.xSpeed == 0){
 			pj.dir = 0;
 			pj.ySpeed = 3;
+			pj.stop = false;
 		}else{
 			pj.ySpeed = 0;
 			pj.xSpeed = 0;
 			pj.stop = true;
 		}
-		pj.stop = false;
 	});
 
 	$("#interfaz").on('click', '#divRight', function(){
 		if(pj.ySpeed == 0 && pj.xSpeed == 0){
 			pj.dir = 2;
 			pj.xSpeed = 3;
+			pj.stop = false;
 		}else{
 			pj.ySpeed = 0;
 			pj.xSpeed = 0;
 			pj.stop = true;
 		}
-		pj.stop = false;
 	});
 
 	$("#interfaz").on('click', '#divLeft', function(){
 		if(pj.ySpeed == 0 && pj.xSpeed == 0){
 			pj.dir = 1;
 			pj.xSpeed = -3;
+			pj.stop = false;
 		}else{
 			pj.ySpeed = 0;
 			pj.xSpeed = 0;
 			pj.stop = true;
 		}
-		pj.stop = false;
 	});
 
 	
