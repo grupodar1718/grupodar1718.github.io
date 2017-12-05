@@ -241,7 +241,6 @@ function sprite (options) {
     
     if(tickCount > that.ticksPerFrame){
       tickCount = 0;
-      
       if(that.frameIndex < numberOfFramesX - 1 && that.stop == false){
         that.frameIndex += 1;
       }else{
@@ -489,7 +488,7 @@ function gameLoop () {
         checkPosition(fireMobs[i]);
       }
     }	
-		
+		console.log(pj.stop);
 		pj.update();
 		pj.render();
 
@@ -1374,6 +1373,55 @@ function countDown(){
 				$("#interfaz").append('<div id="divControles"><div id="divSUP"><div id="divEmpt"><img id="up" src="Interfaz/b_null.png"/></div><div id="divUP"><img id="up" src="Interfaz/b_up.png"/></div><div id="divEmpt"><img id="up" src="Interfaz/b_null.png"/></div></div><div id="divINF"><div id="divLeft"><img id="left" src="Interfaz/b_left.png"/></div><div id="divDown"><img id="down" src="Interfaz/b_down.png"/></div><div id="divRight"><img id="right" src="Interfaz/b_right.png"/></div></div>');
 			});
 	});	
+
+	$("#interfaz").on('click', '#divUP', function(){
+		if(pj.ySpeed == 0 && pj.xSpeed == 0){
+			pj.dir = 3;
+			pj.ySpeed = -3;
+			pj.stop = false;
+		}else{
+			pj.ySpeed = 0;
+			pj.xSpeed = 0;
+			pj.stop = true;
+		}
+	});
+
+	$("#interfaz").on('click', '#divDown', function(){
+		if(pj.ySpeed == 0 && pj.xSpeed == 0){
+			pj.dir = 0;
+			pj.ySpeed = 3;
+			pj.stop = false;
+		}else{
+			pj.ySpeed = 0;
+			pj.xSpeed = 0;
+			pj.stop = true;
+		}
+	});
+
+	$("#interfaz").on('click', '#divRight', function(){
+		if(pj.ySpeed == 0 && pj.xSpeed == 0){
+			pj.dir = 2;
+			pj.xSpeed = 3;
+			pj.stop = false;
+		}else{
+			pj.ySpeed = 0;
+			pj.xSpeed = 0;
+			pj.stop = true;
+		}
+	});
+
+	$("#interfaz").on('click', '#divLeft', function(){
+		if(pj.ySpeed == 0 && pj.xSpeed == 0){
+			pj.dir = 1;
+			pj.xSpeed = -3;
+			pj.stop = false;
+		}else{
+			pj.ySpeed = 0;
+			pj.xSpeed = 0;
+			pj.stop = true;
+		}
+	});
+
 	
 	//Botón pausa
 	
